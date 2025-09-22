@@ -25,6 +25,8 @@ public class Arma : MonoBehaviour
     public ModeloArma ModeloArma;
     public Animator animator;
 
+    public float tempoDelayRecarregar;
+
     private void Awake()
     {
         municaoAtual = capacidadePente;
@@ -52,6 +54,18 @@ public class Arma : MonoBehaviour
         municaoAtual--;
         animator.SetTrigger("Atirar");
         efeitoDisparo.Play();
+    }
+
+    public void RecarregarArma(int quantidade)
+    {
+        municaoAtual += quantidade;
+        municaoNoInventario -= quantidade;
+    }
+
+    public void AlterarMira()
+    {
+        bool miraAtiva = animator.GetBool("Mirar");
+        animator.SetBool("Mirar", !miraAtiva);
     }
 }
 
