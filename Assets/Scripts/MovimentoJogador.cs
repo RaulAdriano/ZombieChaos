@@ -10,6 +10,11 @@ public class MovimentoJogador : MonoBehaviour
     private bool estaNoChao;
     private float velocidadeVertical;
 
+    private bool estaCorrendo;
+    private float nivelStamina;
+
+    [SerializeField] private Animator pistolaAnimator;
+
     void Start()
     {
         cameraPrincipal = Camera.main.transform;
@@ -19,15 +24,9 @@ public class MovimentoJogador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float movimentoHorizontal = Input.GetAxis("Horizontal");
-        float movimentoVertical = Input.GetAxis("Vertical");
-
-        Vector3 direcaoMovimento = new Vector3(movimentoHorizontal, 0, movimentoVertical);
-        direcaoMovimento = cameraPrincipal.TransformDirection(direcaoMovimento).normalized;
-        direcaoMovimento.y = 0;
-
-        characterController.Move(direcaoMovimento * velocidadeMovimento * Time.deltaTime);
         AplicarGravidade();
+        ProcessarMovimento();
+        AtualizarStamina();
     }
 
     private void AplicarGravidade()
@@ -45,5 +44,44 @@ public class MovimentoJogador : MonoBehaviour
         }
 
         characterController.Move(new Vector3(0,velocidadeVertical,0) * Time.deltaTime);
+    }
+
+
+    private void ProcessarMovimento()
+    {
+        float movimentoHorizontal = Input.GetAxis("Horizontal");
+        float movimentoVertical = Input.GetAxis("Vertical");
+
+        estaCorrendo = Input.GetKey(KeyCode.LeftShift);
+
+        Vector3 direcaoMovimento = new Vector3(movimentoHorizontal, 0, movimentoVertical);
+        direcaoMovimento = cameraPrincipal.TransformDirection(direcaoMovimento).normalized;
+        direcaoMovimento.y = 0;
+
+        float velocidadeAtual = estaCorrendo && nivelStamina > 0 ? velocidadeMovimento * 2f : velocidadeMovimento;
+
+        if(estaCorrendo && nivelStamina > 0)
+        {
+            nivelStamina -= Time.deltaTime;
+            nivelStamina = Mathf.Max(0f,nivelStamina);
+        }
+
+        pistolaAnimator.SetBool("Mover", direcaoMovimento != Vector3.zero);
+        pistolaAnimator.SetBool("Correr", estaCorrendo && nivelStamina > 0f);
+
+        characterController.Move(direcaoMovimento * Time.deltaTime * velocidadeAtual);
+    }
+
+    private void AtualizarStamina()
+    {
+        if(!estaCorrendo && nivelStamina < 2f)
+        {
+            nivelStamina += Time.deltaTime;
+        }
+    }
+
+    public bool EstaCorrendo()
+    {
+        return estaCorrendo && nivelStamina > 0f;
     }
 }

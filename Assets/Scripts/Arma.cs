@@ -1,0 +1,67 @@
+using UnityEngine;
+
+public class Arma : MonoBehaviour
+{
+
+    public int tirosPorSegundo;
+    public int capacidadePente;
+    public int municaoNoInventario;
+    public int quantidadeMaximaMunicaoInventario;
+    public int municaoAtual;
+
+    public ParticleSystem efeitoDisparo;
+
+    [SerializeField] private Vector2[] padraoRecoil;
+    private int indiceRecoil;
+
+    public int danoBaixo;
+    public int danoMedio;
+    public int danoAlto;
+    public int distanciaParaDanoMaximo;
+
+    [Range(0f, 1f)]
+    public float multiplicadorDanoReduzido;
+
+    public ModeloArma ModeloArma;
+    public Animator animator;
+
+    private void Awake()
+    {
+        municaoAtual = capacidadePente;
+        animator = GetComponent<Animator>();
+    }
+
+
+    public Vector2 ObterRecoilAtual()
+    {
+        return padraoRecoil[indiceRecoil];
+    }
+
+    public void ProximoRecoil()
+    {
+        indiceRecoil++;
+
+        if(indiceRecoil >= padraoRecoil.Length)
+        {
+            indiceRecoil = 0;
+        }
+    }
+
+    public void RealizarDisparo()
+    {
+        municaoAtual--;
+        animator.SetTrigger("Atirar");
+        efeitoDisparo.Play();
+    }
+}
+
+
+public enum ModeloArma
+{
+    PISTOLA,
+    SHOTGUN,
+    M4A1,
+    SMG45,
+    ARK47,
+    LMG,
+}
