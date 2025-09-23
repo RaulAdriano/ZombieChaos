@@ -13,12 +13,13 @@ public class MovimentoJogador : MonoBehaviour
     private bool estaCorrendo;
     private float nivelStamina;
 
-    [SerializeField] private Animator pistolaAnimator;
+    private GerenciadorArmas gerenciadorArmas;
 
     void Start()
     {
         cameraPrincipal = Camera.main.transform;
         characterController = GetComponent<CharacterController>();
+        gerenciadorArmas = GetComponent<GerenciadorArmas>();
     }
 
     // Update is called once per frame
@@ -66,8 +67,8 @@ public class MovimentoJogador : MonoBehaviour
             nivelStamina = Mathf.Max(0f,nivelStamina);
         }
 
-        pistolaAnimator.SetBool("Mover", direcaoMovimento != Vector3.zero);
-        pistolaAnimator.SetBool("Correr", estaCorrendo && nivelStamina > 0f);
+        gerenciadorArmas.GetArmaAtual().animator.SetBool("Mover", direcaoMovimento != Vector3.zero);
+        gerenciadorArmas.GetArmaAtual().animator.SetBool("Correr", estaCorrendo && nivelStamina > 0f);
 
         characterController.Move(direcaoMovimento * Time.deltaTime * velocidadeAtual);
     }

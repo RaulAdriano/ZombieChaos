@@ -27,7 +27,10 @@ public class GerenciadorArmas : MonoBehaviour
 
     [SerializeField] private CinemachinePanTilt panTilt;
     private float tempoRecoil;
-    [SerializeField] private CinemachineImpulseSource impulseSource;    
+    [SerializeField] private CinemachineImpulseSource impulseSource;
+
+    [SerializeField] private Animator armaOffsetAnimator;
+    private bool mudandoArma;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,13 +44,14 @@ public class GerenciadorArmas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (recarregando) return;
+        if (recarregando || mudandoArma) return;
 
         Arma armaAtual = GetArmaAtual();
         Recarregar(armaAtual);
         Atirar(armaAtual);
         AplicarRecoil(armaAtual);
         Mirar(armaAtual);
+        TrocarArma();
         
     }
 
@@ -101,6 +105,7 @@ public class GerenciadorArmas : MonoBehaviour
     {
         recarregando = true;
         armaAtual.animator.SetTrigger("Recarregar");
+        armaAtual.animator.SetBool("Mirar",false);
 
         yield return new WaitForSeconds(armaAtual.tempoDelayRecarregar);
 
@@ -127,4 +132,44 @@ public class GerenciadorArmas : MonoBehaviour
             armaAtual.AlterarMira();
         }
     }
+
+    private void TrocarArma()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StartCoroutine(AlterarArma(armaPrimaria));
+        }else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StartCoroutine(AlterarArma(armaSecundaria));
+        }
+    }
+
+    private IEnumerator AlterarArma(Arma novaArma)
+    {
+        Arma arma = GetArmaAtual();
+
+        if(GetArmaAtual() == novaArma) yield break;
+
+        mudandoArma = true;
+        CancelarRecarga();
+        armaOffsetAnimator.SetBool("MostrarArma", false);
+        yield return new WaitForSeconds(0.5f);
+
+        armaPrimaria.gameObject.SetActive(false);
+        armaSecundaria.gameObject.SetActive(false);
+
+        novaArma.gameObject.SetActive(true);
+
+        armaOffsetAnimator.SetBool("MostrarArma", true);
+        yield return new WaitForSeconds(0.5f);
+
+        if(armaPrimaria != novaArma)
+        {
+            armaSecundaria = novaArma;
+        }
+
+        mudandoArma=false;  
+    }
 }
+
+

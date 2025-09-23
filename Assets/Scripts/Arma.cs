@@ -76,6 +76,6 @@ public enum ModeloArma
     SHOTGUN,
     M4A1,
     SMG45,
-    ARK47,
+    AK47,
     LMG,
 }
