@@ -4242,6 +4242,7 @@ GameObject:
   - component: {fileID: 1736634883}
   - component: {fileID: 1736634885}
   - component: {fileID: 1736634886}
+  - component: {fileID: 1736634887}
   m_Layer: 6
   m_Name: Jogador
   m_TagString: Untagged
@@ -4328,8 +4329,8 @@ MonoBehaviour:
   - {fileID: 406089217}
   - {fileID: 174190215}
   - {fileID: 266166624}
-  armaPrimaria: {fileID: 2136520331}
-  armaSecundaria: {fileID: 266166624}
+  armaPrimaria: {fileID: 1997629751}
+  armaSecundaria: {fileID: 174190215}
   efeitoImpactoTiro: {fileID: 5670622003426973932, guid: 249e173a257ee554a94e75d86cba6511, type: 3}
   efeitoSangue: {fileID: 1687632172149952028, guid: c6705d58f4fe4cc4794d97f3c7fd7218, type: 3}
   tiroLayerMask:
@@ -4338,6 +4339,20 @@ MonoBehaviour:
   panTilt: {fileID: 2137765737}
   impulseSource: {fileID: 2137765741}
   armaOffsetAnimator: {fileID: 961768673}
+--- !u!114 &1736634887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736634882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47551fe65bc04bb419f4dc798aaa1e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InterfaceUsuario
+  staminaSlider: {fileID: 12283203}
+  municaoText: {fileID: 1281279378}
 --- !u!1 &1783338380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,7 +5964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1cfbc0440489bdc4b80cc67ebda5ca71, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 977891482331847632, guid: 1cfbc0440489bdc4b80cc67ebda5ca71, type: 3}
       propertyPath: m_Layer

@@ -79,6 +79,8 @@ public class MovimentoJogador : MonoBehaviour
         {
             nivelStamina += Time.deltaTime;
         }
+
+        InterfaceUsuario.Instance.AtualizarStamina(nivelStamina / 2f);
     }
 
     public bool EstaCorrendo()
