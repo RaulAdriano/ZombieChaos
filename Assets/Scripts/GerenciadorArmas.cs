@@ -107,11 +107,32 @@ public class GerenciadorArmas : MonoBehaviour
         armaAtual.animator.SetTrigger("Recarregar");
         armaAtual.animator.SetBool("Mirar",false);
 
-        yield return new WaitForSeconds(armaAtual.tempoDelayRecarregar);
+        if(armaAtual.ModeloArma == ModeloArma.SHOTGUN)
+        {
+            int balasRecarregar = Mathf.Min(armaAtual.capacidadePente, armaAtual.municaoNoInventario) - armaAtual.municaoAtual;
+            yield return new WaitForSeconds(armaAtual.tempoDelayRecarregar);
 
-        int balasRecarregar = Mathf.Min(armaAtual.capacidadePente, armaAtual.municaoNoInventario) - armaAtual.municaoAtual;
+            for (int i = 0; i < balasRecarregar; i++)
+            {
+                if(i == balasRecarregar - 1)
+                {
+                    armaAtual.animator.SetTrigger("FimRecarregar");
+                }
 
-        armaAtual.RecarregarArma(balasRecarregar);
+                armaAtual.RecarregarArma(1);
+                yield return new WaitForSeconds(armaAtual.tempoDelayRecarregar);
+            }
+        }
+        else
+        {
+            yield return new WaitForSeconds(armaAtual.tempoDelayRecarregar);
+
+            int balasRecarregar = Mathf.Min(armaAtual.capacidadePente, armaAtual.municaoNoInventario) - armaAtual.municaoAtual;
+
+            armaAtual.RecarregarArma(balasRecarregar);
+        }
+
+            
         recarregando = false;
     }
 
