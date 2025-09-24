@@ -4243,6 +4243,7 @@ GameObject:
   - component: {fileID: 1736634885}
   - component: {fileID: 1736634886}
   - component: {fileID: 1736634887}
+  - component: {fileID: 1736634888}
   m_Layer: 6
   m_Name: Jogador
   m_TagString: Untagged
@@ -4354,6 +4355,22 @@ MonoBehaviour:
   staminaSlider: {fileID: 12283203}
   municaoText: {fileID: 1281279378}
   miraImage: {fileID: 784713196}
+  barraDeVidaSlider: {fileID: 470425714}
+  pontosText: {fileID: 231321810}
+--- !u!114 &1736634888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736634882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06db39315b8b86149963343899d5d8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Jogador
+  vidaMaxima: 100
+  pontos: 0
 --- !u!1 &1783338380
 GameObject:
   m_ObjectHideFlags: 0

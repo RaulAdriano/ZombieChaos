@@ -10,6 +10,8 @@ public class InterfaceUsuario : MonoBehaviour
     [SerializeField] private Slider staminaSlider;
     [SerializeField] private TMP_Text municaoText;
     [SerializeField] private Image miraImage;
+    [SerializeField] private Slider barraDeVidaSlider;
+    [SerializeField] private TMP_Text pontosText;
 
     private void Awake()
     {
@@ -42,6 +44,17 @@ public class InterfaceUsuario : MonoBehaviour
     public void ExibirMira(bool exibirMira)
     {
         miraImage.enabled = exibirMira; 
+    }
+
+    public void AtualizarBarraVida(int vidaAtual, int vidaMaxima)
+    {
+        barraDeVidaSlider.maxValue = vidaMaxima;
+        barraDeVidaSlider.value = vidaAtual;
+    }
+
+    public void AtualizarPontos(int variacao, int saldoAtual)
+    {
+        pontosText.text = "Pontos: " + saldoAtual;
     }
 
 }
