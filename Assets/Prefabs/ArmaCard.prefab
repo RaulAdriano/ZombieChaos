@@ -195,7 +195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6131256860352468772}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5447839611908541136}
+        m_TargetAssemblyTypeName: ArmaCard, Assembly-CSharp
+        m_MethodName: ComprarArma
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2583666672588768733
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +219,7 @@ GameObject:
   - component: {fileID: 6162385366006655182}
   - component: {fileID: 5691911541322910412}
   - component: {fileID: 3819079682489627850}
+  - component: {fileID: 5447839611908541136}
   m_Layer: 5
   m_Name: ArmaCard
   m_TagString: Untagged
@@ -275,6 +288,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5447839611908541136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2583666672588768733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfc01a22ff4a834ca09d130bafcc36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ArmaCard
+  comprarArmaButton: {fileID: 7458185554743428554}
+  comprarMunicaoButton: {fileID: 3082027930536470171}
+  valorArma: 500
+  valorMunicao: 200
+  modeloArma: 0
+  gerenciadorArmas: {fileID: 0}
+  gerenciadorLoja: {fileID: 0}
 --- !u!1 &2698428680021116033
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +427,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3374760340972869746}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5447839611908541136}
+        m_TargetAssemblyTypeName: ArmaCard, Assembly-CSharp
+        m_MethodName: ComprarMunicao
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2934901264660137436
 GameObject:
   m_ObjectHideFlags: 0

@@ -208,6 +208,30 @@ public class GerenciadorArmas : MonoBehaviour
             InterfaceUsuario.Instance.AtualizarMunicao(armaAtual.municaoAtual, armaAtual.municaoNoInventario);
         }
     }
+
+    public void EquiparNovaArma(ModeloArma modeloArma)
+    {
+        foreach(var arma in armasDisponiveis)
+        {
+            if(arma.ModeloArma == modeloArma)
+            {
+                StartCoroutine(AlterarArma(arma));
+                break;
+            }
+        }
+    }
+
+    public void EquiparMunicao(ModeloArma modeloArma)
+    {
+        foreach (var arma in armasDisponiveis)
+        {
+            if (arma.ModeloArma == modeloArma)
+            {
+                arma.CarregarInventario();
+                AtualizarInterfaceArma(GetArmaAtual());
+            }
+        }
+    }
 }
 
 

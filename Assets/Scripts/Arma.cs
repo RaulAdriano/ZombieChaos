@@ -69,6 +69,11 @@ public class Arma : MonoBehaviour
 
         InterfaceUsuario.Instance.ExibirMira(miraAtiva);
     }
+
+    public void CarregarInventario()
+    {
+        municaoNoInventario = quantidadeMaximaMunicaoInventario;
+    }
 }
 
 
