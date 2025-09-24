@@ -66,6 +66,8 @@ public class Arma : MonoBehaviour
     {
         bool miraAtiva = animator.GetBool("Mirar");
         animator.SetBool("Mirar", !miraAtiva);
+
+        InterfaceUsuario.Instance.ExibirMira(miraAtiva);
     }
 }
 

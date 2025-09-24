@@ -4329,8 +4329,8 @@ MonoBehaviour:
   - {fileID: 406089217}
   - {fileID: 174190215}
   - {fileID: 266166624}
-  armaPrimaria: {fileID: 1997629751}
-  armaSecundaria: {fileID: 174190215}
+  armaPrimaria: {fileID: 2136520331}
+  armaSecundaria: {fileID: 266166624}
   efeitoImpactoTiro: {fileID: 5670622003426973932, guid: 249e173a257ee554a94e75d86cba6511, type: 3}
   efeitoSangue: {fileID: 1687632172149952028, guid: c6705d58f4fe4cc4794d97f3c7fd7218, type: 3}
   tiroLayerMask:
@@ -4353,6 +4353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InterfaceUsuario
   staminaSlider: {fileID: 12283203}
   municaoText: {fileID: 1281279378}
+  miraImage: {fileID: 784713196}
 --- !u!1 &1783338380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5964,7 +5965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1cfbc0440489bdc4b80cc67ebda5ca71, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 977891482331847632, guid: 1cfbc0440489bdc4b80cc67ebda5ca71, type: 3}
       propertyPath: m_Layer

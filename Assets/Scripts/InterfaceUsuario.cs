@@ -9,6 +9,7 @@ public class InterfaceUsuario : MonoBehaviour
 
     [SerializeField] private Slider staminaSlider;
     [SerializeField] private TMP_Text municaoText;
+    [SerializeField] private Image miraImage;
 
     private void Awake()
     {
@@ -36,6 +37,11 @@ public class InterfaceUsuario : MonoBehaviour
     public void AtualizarMunicao(int municaoAtual, int municaoNoInventario)
     {
         municaoText.text = municaoAtual + "/" + municaoNoInventario;
+    }
+
+    public void ExibirMira(bool exibirMira)
+    {
+        miraImage.enabled = exibirMira; 
     }
 
 }

@@ -104,6 +104,8 @@ public class GerenciadorArmas : MonoBehaviour
             StopCoroutine(recarregarCoroutine);
         }
         recarregando = false;
+
+        InterfaceUsuario.Instance.ExibirMira(true);
     }
 
     private IEnumerator ExecutarRecarga(Arma armaAtual)
