@@ -74,7 +74,34 @@ public class GerenciadorArmas : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(cameraPrincipal.position, cameraPrincipal.forward, out hit, 1000, tiroLayerMask, QueryTriggerInteraction.Ignore))
             {
-                Instantiate(efeitoImpactoTiro, hit.point, Quaternion.LookRotation(hit.point));
+                var parteCorpoInimigo = hit.transform.GetComponent<ParteCorpo>();
+
+                if (parteCorpoInimigo != null)
+                {
+                    Instantiate(efeitoSangue, hit.point, Quaternion.LookRotation(hit.point));
+
+                    var vidaInimigo = parteCorpoInimigo.transform.root.GetComponent<VidaInimigo>();
+
+                    int dano = armaAtual.GetDano(hit.distance,parteCorpoInimigo.NivelDano);
+
+                    bool inimigoMorto = vidaInimigo.ReduzirVida(dano);
+
+                    if (inimigoMorto)
+                    {
+                        if (parteCorpoInimigo.NivelDano == NivelDano.ALTO)
+                        {
+                            Jogador.Instance.AdicionarPontos(vidaInimigo.GetPontosDerrota() * 2);
+                        }
+                        else
+                        {
+                            Jogador.Instance.AdicionarPontos(vidaInimigo.GetPontosDerrota());
+                        }
+                    }
+                }
+                else
+                {
+                    Instantiate(efeitoImpactoTiro, hit.point, Quaternion.LookRotation(hit.point));
+                }
             }
 
             tempoRecoil = 0.2f;

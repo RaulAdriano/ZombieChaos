@@ -74,6 +74,32 @@ public class Arma : MonoBehaviour
     {
         municaoNoInventario = quantidadeMaximaMunicaoInventario;
     }
+
+    public int GetDano(float distancia, NivelDano nivelDano)
+    {
+        int dano = 0;
+
+        switch (nivelDano)
+        {
+            case NivelDano.BAIXO:
+                dano = danoBaixo;
+                break;
+            case NivelDano.MEDIO:
+                dano = danoMedio;
+                break;
+            case NivelDano.ALTO:
+                dano = danoAlto;
+                break;
+        }
+
+        if(distancia > distanciaParaDanoMaximo)
+        {
+            dano = (int)(dano * multiplicadorDanoReduzido);
+        }
+
+        return dano;
+
+    }
 }
 
 

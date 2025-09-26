@@ -11,6 +11,9 @@ public class Inimigo : MonoBehaviour
     private float tempoProximoAtaque;
     [SerializeField] private float intervaloEntreAtaques;
 
+    [SerializeField] private HitboxInimigo hitboxInimigo;
+    [SerializeField] private int dano;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +32,7 @@ public class Inimigo : MonoBehaviour
 
             if (Time.time > tempoProximoAtaque)
             {
-                Atacar();
+                PrepararAtaque();
             }
         }
         else
@@ -38,7 +41,7 @@ public class Inimigo : MonoBehaviour
         }
     }
 
-    private void Atacar()
+    private void PrepararAtaque()
     {
         Vector3 direcaoParaJogador = (jogador.position - transform.position).normalized;
         Quaternion rotacaoParaJogador = Quaternion.LookRotation(direcaoParaJogador);
@@ -46,5 +49,20 @@ public class Inimigo : MonoBehaviour
         transform.rotation = rotacaoParaJogador;
         animator.SetTrigger("Atacar");
         tempoProximoAtaque = Time.time + intervaloEntreAtaques;
+    }
+
+    public void RealizarAtaque()
+    {
+        if (hitboxInimigo.GetJogadorNaHitbox())
+        {
+            Jogador.Instance.ReduzirVida(dano);
+        }
+    }
+
+    public void Morrer()
+    {
+        enabled = false;
+        animator.SetTrigger("Morrer");
+        Destroy(gameObject, 5f);
     }
 }
