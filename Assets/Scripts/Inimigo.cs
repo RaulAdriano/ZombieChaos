@@ -39,6 +39,8 @@ public class Inimigo : MonoBehaviour
         {
             navMeshAgent.SetDestination(jogador.position);
         }
+
+        animator.SetBool("Mover", navMeshAgent.velocity.magnitude >= 0.1f);
     }
 
     private void PrepararAtaque()
