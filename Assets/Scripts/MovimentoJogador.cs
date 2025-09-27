@@ -59,7 +59,7 @@ public class MovimentoJogador : MonoBehaviour
         direcaoMovimento = cameraPrincipal.TransformDirection(direcaoMovimento).normalized;
         direcaoMovimento.y = 0;
 
-        float velocidadeAtual = estaCorrendo && nivelStamina > 0 ? velocidadeMovimento * 2f : velocidadeMovimento;
+        float velocidadeAtual = estaCorrendo && nivelStamina > 0 ? velocidadeMovimento * 3f : velocidadeMovimento;
 
         if(estaCorrendo && nivelStamina > 0)
         {
@@ -75,12 +75,12 @@ public class MovimentoJogador : MonoBehaviour
 
     private void AtualizarStamina()
     {
-        if(!estaCorrendo && nivelStamina < 2f)
+        if(!estaCorrendo && nivelStamina < 4f)
         {
             nivelStamina += Time.deltaTime;
         }
 
-        InterfaceUsuario.Instance.AtualizarStamina(nivelStamina / 2f);
+        InterfaceUsuario.Instance.AtualizarStamina(nivelStamina / 4f);
     }
 
     public bool EstaCorrendo()

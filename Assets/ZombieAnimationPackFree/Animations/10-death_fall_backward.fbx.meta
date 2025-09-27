@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 4c84b6795e5cce74a9c35146e05f4c0a
 ModelImporter:
-  serializedVersion: 22200
+  serializedVersion: 24200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -853,32 +853,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'LeftToes'
-      : position error = 17.893724 mm\n\t'LeftEye' : position error = 12.035667 mm\n\t'Jaw'
-      : position error = 104.133781 mm\n\t'RightEye' : position error = 12.372075
-      mm\n\t'LeftThumbProximal' : position error = 19.217230 mm\n\t'LeftThumbIntermediate'
-      : position error = 8.027467 mm\n\t'LeftThumbDistal' : position error = 6.405741
-      mm\n\t'LeftIndexProximal' : position error = 10.320436 mm\n\t'LeftIndexIntermediate'
-      : position error = 12.269888 mm\n\t'LeftIndexDistal' : position error = 4.128180
-      mm\n\t'LeftMiddleProximal' : position error = 9.288447 mm\n\t'LeftMiddleIntermediate'
-      : position error = 15.136727 mm\n\t'LeftRingProximal' : position error = 15.136777
-      mm\n\t'LeftRingIntermediate' : position error = 14.219302 mm\n\t'LeftRingDistal'
-      : position error = 1.261423 mm\n\t'LeftLittleProximal' : position error = 17.315491
-      mm\n\t'LeftLittleIntermediate' : position error = 7.912344 mm\n\t'LeftLittleDistal'
-      : position error = 2.637486 mm\n\t'RightIndexProximal' : position error = 10.510970
-      mm\n\t'RightIndexIntermediate' : position error = 13.330914 mm\n\t'RightIndexDistal'
-      : position error = 4.229973 mm\n\t'RightMiddleProximal' : position error =
-      9.229140 mm\n\t'RightMiddleIntermediate' : position error = 15.125519 mm\n\t'RightMiddleDistal'
-      : position error = 1.153668 mm\n\t'RightRingProximal' : position error = 13.587289
-      mm\n\t'RightRingIntermediate' : position error = 13.202704 mm\n\t'RightRingDistal'
-      : position error = 1.922697 mm\n\t'RightLittleProximal' : position error =
-      17.304594 mm\n\t'RightLittleIntermediate' : position error = 8.716438 mm\n\t'RightLittleDistal'
-      : position error = 3.204553 mm\n\t'RightThumbProximal' : position error = 16.897802
-      mm\n\t'RightThumbIntermediate' : position error = 5.933570 mm\n\t'RightThumbDistal'
-      : position error = 6.062581 mm\n\t'RightToes' : position error = 17.893696
-      mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -948,6 +922,9 @@ ModelImporter:
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
     optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -1740,8 +1717,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 83df9562de1b27646afd2f8bfb8d8927,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 83df9562de1b27646afd2f8bfb8d8927, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
