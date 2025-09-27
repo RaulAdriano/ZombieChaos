@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 4971322786111142}
   - component: {fileID: 33475097957950528}
   - component: {fileID: 23999648286657582}
+  - component: {fileID: 4104691832962188551}
   m_Layer: 0
   m_Name: Rubble_Big_LOD0
   m_TagString: Untagged
@@ -334,6 +335,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4104691832962188551
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1802403335016090}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 524de84b2415f294bb94d521d33e98f9, type: 3}
 --- !u!1 &1939460830181546
 GameObject:
   m_ObjectHideFlags: 0
