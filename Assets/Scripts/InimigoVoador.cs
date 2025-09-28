@@ -15,6 +15,8 @@ public class InimigoVoador : MonoBehaviour
 
     private float tempoProximoAtaque;
 
+    [SerializeField] private AudioSource atacarAudioSource;
+
     private void Start()
     {
         jogador = GameObject.FindGameObjectWithTag("Player").transform;
@@ -43,6 +45,7 @@ public class InimigoVoador : MonoBehaviour
 
     private void Atacar()
     {
+        atacarAudioSource.Play();
         tempoProximoAtaque = Time.time + intervaloEntreAtaques;
 
         pontoLancamento.LookAt(jogador);
