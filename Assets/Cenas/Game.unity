@@ -39280,7 +39280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jogador
   vidaMaxima: 100
-  pontos: 5000
+  pontos: 0
   cinemachine: {fileID: 1896800444}
 --- !u!114 &1966968000
 MonoBehaviour:
