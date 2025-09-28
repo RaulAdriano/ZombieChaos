@@ -93,6 +93,7 @@ public class GerenciadorArmas : MonoBehaviour
                         if (parteCorpoInimigo.NivelDano == NivelDano.ALTO)
                         {
                             Jogador.Instance.AdicionarPontos(vidaInimigo.GetPontosDerrota() * 2);
+                            InterfaceUsuario.Instance.ExecutarHeadshot();
                         }
                         else
                         {

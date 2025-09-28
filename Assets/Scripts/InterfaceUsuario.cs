@@ -27,6 +27,12 @@ public class InterfaceUsuario : MonoBehaviour
 
     private Coroutine danoVolumeCoroutine;
 
+    [SerializeField] private Animator headshotAnimator;
+    [SerializeField] private AudioSource headshotAudioSource;
+
+    [SerializeField] private TMP_Text pontosRecebidosText;
+    [SerializeField] private Animator pontosRecebidosAnimator;
+
     private void Awake()
     {
        if (Instance == null)
@@ -69,6 +75,12 @@ public class InterfaceUsuario : MonoBehaviour
     public void AtualizarPontos(int variacao, int saldoAtual)
     {
         pontosText.text = "Pontos: " + saldoAtual;
+
+        if (variacao > 0)
+        {
+            pontosRecebidosText.text = "+" + variacao;
+            pontosRecebidosAnimator.SetTrigger("Executar");
+        }
     }
 
     public void AtualizarOndaAtual(int ondaAtual)
@@ -120,5 +132,11 @@ public class InterfaceUsuario : MonoBehaviour
         }
 
         danoVolumeCoroutine = StartCoroutine(DanoVolumeCoroutine());
+    }
+
+    public void ExecutarHeadshot()
+    {
+        headshotAnimator.SetTrigger("Executar");
+        headshotAudioSource.PlayOneShot(headshotAudioSource.clip);
     }
 }
