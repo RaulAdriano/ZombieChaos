@@ -39241,7 +39241,7 @@ MonoBehaviour:
   - {fileID: 985467763}
   - {fileID: 1374791791}
   armaPrimaria: {fileID: 1611446350}
-  armaSecundaria: {fileID: 1374791791}
+  armaSecundaria: {fileID: 0}
   efeitoImpactoTiro: {fileID: 5670622003426973932, guid: 249e173a257ee554a94e75d86cba6511, type: 3}
   efeitoSangue: {fileID: 1687632172149952028, guid: c6705d58f4fe4cc4794d97f3c7fd7218, type: 3}
   tiroLayerMask:
@@ -39291,7 +39291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Jogador
   vidaMaxima: 100
-  pontos: 500000000
+  pontos: 0
   cinemachine: {fileID: 1896800444}
 --- !u!114 &1966968000
 MonoBehaviour:
