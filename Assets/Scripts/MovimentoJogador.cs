@@ -80,8 +80,8 @@ public class MovimentoJogador : MonoBehaviour
             nivelStamina = Mathf.Max(0f,nivelStamina);
         }
 
-        gerenciadorArmas.GetArmaAtual().animator.SetBool("Mover", direcaoMovimento != Vector3.zero);
-        gerenciadorArmas.GetArmaAtual().animator.SetBool("Correr", estaCorrendo && nivelStamina > 0f);
+        gerenciadorArmas.GetArmaAtual()?.animator.SetBool("Mover", direcaoMovimento != Vector3.zero);
+        gerenciadorArmas.GetArmaAtual()?.animator.SetBool("Correr", estaCorrendo && nivelStamina > 0f);
 
         characterController.Move(direcaoMovimento * Time.deltaTime * velocidadeAtual);
     }

@@ -197,7 +197,7 @@ public class GerenciadorArmas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             StartCoroutine(AlterarArma(armaPrimaria));
-        }else if (Input.GetKeyDown(KeyCode.Alpha2))
+        }else if (Input.GetKeyDown(KeyCode.Alpha2) && armaSecundaria != null)
         {
             StartCoroutine(AlterarArma(armaSecundaria));
         }
@@ -215,7 +215,7 @@ public class GerenciadorArmas : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         armaPrimaria.gameObject.SetActive(false);
-        armaSecundaria.gameObject.SetActive(false);
+        armaSecundaria?.gameObject.SetActive(false);
 
         novaArma.gameObject.SetActive(true);
 
