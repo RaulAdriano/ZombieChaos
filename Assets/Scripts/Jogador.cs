@@ -14,6 +14,8 @@ public class Jogador : MonoBehaviour
     private GerenciadorArmas gerenciadorArmas;
     [SerializeField] private GameObject cinemachine;
 
+    private int monstrosDerrotados;
+
 
     private void Awake()
     {
@@ -54,6 +56,7 @@ public class Jogador : MonoBehaviour
     {
         estaMorto = true;
         Time.timeScale = 0;
+        InterfaceUsuario.Instance.ExibirGameOver();
     }
 
     private void AtualizarBarraVida()
@@ -90,5 +93,21 @@ public class Jogador : MonoBehaviour
     public int GetPontos()
     {
         return pontos;
+    }
+
+    public void RestaurarVida()
+    {
+        vidaAtual = vidaMaxima;
+        AtualizarBarraVida();
+    }
+
+    public void NovoMonstroDerrotado()
+    {
+        monstrosDerrotados++;
+    }
+
+    public int GetMonstrosDerrotados()
+    {
+        return monstrosDerrotados;
     }
 }

@@ -88,6 +88,8 @@ public class GerenciadorArmas : MonoBehaviour
 
                     if (inimigoMorto)
                     {
+                        Jogador.Instance.NovoMonstroDerrotado();
+
                         if (parteCorpoInimigo.NivelDano == NivelDano.ALTO)
                         {
                             Jogador.Instance.AdicionarPontos(vidaInimigo.GetPontosDerrota() * 2);

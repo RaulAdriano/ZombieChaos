@@ -15,11 +15,22 @@ public class MovimentoJogador : MonoBehaviour
 
     private GerenciadorArmas gerenciadorArmas;
 
+    [SerializeField] private AudioSource passosAudioSource;
+    [SerializeField] private AudioClip[] passosAudioCLip;
+    [SerializeField] private AudioClip pularAudioCLip;
+
+    [SerializeField] private float intervaloPassosAndando;
+    [SerializeField] private float intervaloPassosCorrendo;
+    private float temporizadorPassos;
+
+
     void Start()
     {
         cameraPrincipal = Camera.main.transform;
         characterController = GetComponent<CharacterController>();
         gerenciadorArmas = GetComponent<GerenciadorArmas>();
+
+        temporizadorPassos = intervaloPassosAndando;
     }
 
     // Update is called once per frame
@@ -28,6 +39,7 @@ public class MovimentoJogador : MonoBehaviour
         AplicarGravidade();
         ProcessarMovimento();
         AtualizarStamina();
+        SonsDePassos();
     }
 
     private void AplicarGravidade()
@@ -37,6 +49,7 @@ public class MovimentoJogador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && estaNoChao)
         {
             velocidadeVertical = 4.5f;
+            passosAudioSource.PlayOneShot(pularAudioCLip);
         }
 
         if (!estaNoChao || velocidadeVertical > Physics.gravity.y)
@@ -86,5 +99,23 @@ public class MovimentoJogador : MonoBehaviour
     public bool EstaCorrendo()
     {
         return estaCorrendo && nivelStamina > 0f;
+    }
+
+    private void SonsDePassos()
+    {
+        if(characterController.velocity ==  Vector3.zero || !estaNoChao)
+        {
+            temporizadorPassos = intervaloPassosAndando;
+            return;
+        }
+
+        temporizadorPassos -= Time.deltaTime;
+        if(temporizadorPassos <= 0f)
+        {
+            int indice = Random.Range(0, passosAudioCLip.Length);
+            passosAudioSource.PlayOneShot(passosAudioCLip[indice]);
+
+            temporizadorPassos = estaCorrendo && nivelStamina >= 0f ? intervaloPassosCorrendo : intervaloPassosAndando;
+        }
     }
 }

@@ -12,6 +12,12 @@ public class InterfaceUsuario : MonoBehaviour
     [SerializeField] private Image miraImage;
     [SerializeField] private Slider barraDeVidaSlider;
     [SerializeField] private TMP_Text pontosText;
+    [SerializeField] private TMP_Text ondaAtualText;
+    [SerializeField] private TMP_Text tempoRestanteProximaOndaText;
+
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_Text gameOverOndasText;
+    [SerializeField] private TMP_Text gameOverMonstrosDerrotadosText;
 
     private void Awake()
     {
@@ -55,6 +61,24 @@ public class InterfaceUsuario : MonoBehaviour
     public void AtualizarPontos(int variacao, int saldoAtual)
     {
         pontosText.text = "Pontos: " + saldoAtual;
+    }
+
+    public void AtualizarOndaAtual(int ondaAtual)
+    {
+        ondaAtualText.text = "onda " + ondaAtual; 
+        gameOverOndasText.text = "Onda: " + ondaAtual;
+    }
+
+    public void AtualizarTempoRestante(float tempo)
+    {
+        tempoRestanteProximaOndaText.text = tempo.ToString("00.0");
+    }
+
+    public void ExibirGameOver()
+    {
+        gameOverPanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        gameOverMonstrosDerrotadosText.text = "Monstros Derrotados: " + Jogador.Instance.GetMonstrosDerrotados();
     }
 
 }
