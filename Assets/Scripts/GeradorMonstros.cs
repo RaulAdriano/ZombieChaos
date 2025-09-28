@@ -15,6 +15,7 @@ public class GeradorMonstros : MonoBehaviour
 
     private Transform jogador;
 
+    [SerializeField] private AudioSource novaOndaAudioSource;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class GeradorMonstros : MonoBehaviour
         while (true)
         {
             Jogador.Instance.RestaurarVida();
+            novaOndaAudioSource.Play();
 
             tempoRestanteProximaOnda = 30 + 5 * ondaAtual;
             int totalMonstros = Mathf.CeilToInt(monstrosIniciaisPorOnda * Mathf.Log(ondaAtual + 1));

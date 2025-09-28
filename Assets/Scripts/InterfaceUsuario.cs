@@ -32,6 +32,7 @@ public class InterfaceUsuario : MonoBehaviour
 
     [SerializeField] private TMP_Text pontosRecebidosText;
     [SerializeField] private Animator pontosRecebidosAnimator;
+    [SerializeField] private AudioSource clickAudioSource;
 
     private void Awake()
     {
@@ -138,5 +139,10 @@ public class InterfaceUsuario : MonoBehaviour
     {
         headshotAnimator.SetTrigger("Executar");
         headshotAudioSource.PlayOneShot(headshotAudioSource.clip);
+    }
+
+    public void TocarSomClick()
+    {
+        clickAudioSource.Play();
     }
 }

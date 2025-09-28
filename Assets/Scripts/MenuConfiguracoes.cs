@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuConfiguracoes : MonoBehaviour
@@ -97,5 +98,16 @@ public class MenuConfiguracoes : MonoBehaviour
 
         qualidadeDropDown.value = qualidade;
         QualitySettings.SetQualityLevel (qualidade);
+    }
+
+    public void CarregarNovaCena(int indexCena)
+    {
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(indexCena);
+    }
+
+    public void SairJogo()
+    {
+        Application.Quit();
     }
 }
