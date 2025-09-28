@@ -1,5 +1,7 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class InterfaceUsuario : MonoBehaviour
@@ -18,6 +20,12 @@ public class InterfaceUsuario : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TMP_Text gameOverOndasText;
     [SerializeField] private TMP_Text gameOverMonstrosDerrotadosText;
+
+    [SerializeField] private Volume danoVolume;
+    [SerializeField] private AudioSource danoAudioSource;
+    [SerializeField] private AudioSource RespiracaoSource;
+
+    private Coroutine danoVolumeCoroutine;
 
     private void Awake()
     {
@@ -81,4 +89,36 @@ public class InterfaceUsuario : MonoBehaviour
         gameOverMonstrosDerrotadosText.text = "Monstros Derrotados: " + Jogador.Instance.GetMonstrosDerrotados();
     }
 
+    private IEnumerator DanoVolumeCoroutine()
+    {
+        danoAudioSource.Play();
+        RespiracaoSource.Play();
+
+        while (danoVolume.weight < 1)
+        {
+            danoVolume.weight += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(4);
+
+        while (danoVolume.weight > 0)
+        {
+            danoVolume.weight -= Time.deltaTime;
+            yield return null;
+        }
+
+        danoAudioSource.Stop();
+        RespiracaoSource.Stop();
+    }
+
+    public void AtivarEfeitoDano()
+    {
+        if(danoVolumeCoroutine != null)
+        {
+            StopCoroutine(DanoVolumeCoroutine());
+        }
+
+        danoVolumeCoroutine = StartCoroutine(DanoVolumeCoroutine());
+    }
 }
